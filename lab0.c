@@ -173,7 +173,7 @@ int main(void)
 	//           c.) Entering the size of heap, e.g. 512, under Heap Size
 	//        2. printf function is advanced and using printf may require 
 	//           significant code size (6KB-10KB).   
-	printf("\n\n\RANDYMARTINEZ!\n\r");//Modified according to the tutorial
+	printf("\n\n\R.MARTINEZ!\n\r");//Modified according to the tutorial, Changed a second time
 
 	// Print a message requesting the user to select a LED to toggle.
 	printf("Select LED to Toggle (4-7): ");
