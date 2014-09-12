@@ -27,7 +27,7 @@
 
 #include "p24fj64ga002.h"
 #include <stdio.h>
-typedef enum stateTypeEnum {WaitForPress, WaitForRelease,LEDToggle}stateType;
+typedef enum stateTypeEnum {WaitForPress, WaitForRelease,LEDToggle}stateType; // creates state types for switch statement below
 
 // ******************************************************************************************* //
 // Configuration bits for CONFIG1 settings. 
@@ -79,7 +79,7 @@ int ledToToggle = 4;
 
 int main(void)
 {
-  stateType state;
+  stateType state;// declares state as a statType variable
 
 	// Varaible for character recived by UART.
 	int receivedChar;
@@ -187,37 +187,37 @@ int main(void)
 
 	// The main loop for your microcontroller should not exit (return), as
 	// the program should run as long as the device is powered on. 
-	while(1)
+	while(1) // while the the board is powered on
 	{
 		// **TODO** Modified the main loop of the software application such that 
 		// whenever the SW1 is continuously pressed, the currently selected LED 
 		// will blink twice as fast. When SW1 is released the LEDs will blink at 
 		// the initially defined rate.
 
-            switch(state) {
+            switch(state) { // function that uses cases to execute desired outputs
                     case WaitForPress:
-                        if(PORTBbits.RB5==0) {
+                        if(PORTBbits.RB5==0){ //SW1 is pressed
                             state = LEDToggle;
-                            PR1  =  14400/2;
-                            TMR1 = 0;
+                            PR1  =  14400/2; // Speeds up signal to LED
+                            TMR1 = 0; // resets Timer to remove undesired affects
                         }
-                        break;
+                        break; //exits case
 
                     case LEDToggle:
-                            LATB = LATB^0x8000;
-                            state = WaitForRelease;
+                            LATB = LATB^0x8000; // LATB xor'd with 0100 0000 0000 0000
+                            state = WaitForRelease; // state that this case should be in
 
-                            break;
+                            break; //exits case
                     case WaitForRelease:
-                         if(PORTBbits.RB5==1) {
+                         if(PORTBbits.RB5==1) {  //SW1 is not being pressed
                              state = WaitForPress;
-                             PR1 = 14400;
-                             TMR1 = 0;
+                             PR1 = 14400; // original signal speed
+                             TMR1 = 0; // resets Timer to remove undesired affects
                             }
-                         break;
+                         break;//exits case
 
-                         default:
-                         break;
+                         default: // considers all other cases not observed in the code while loop
+                         break;//exits case
                }
                 // Code from slide 26 was implemented
 
