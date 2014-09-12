@@ -100,9 +100,9 @@ int main(void)
 	TRISBbits.TRISB13 = 1;
 	TRISBbits.TRISB12 = 1;
 
-	// **TODO** SW1 of the 16-bit 28-pin Starter Board is connected to pin RB??. 
+	// **TODO** SW1 of the 16-bit 28-pin Starter Board is connected to pin RB?? RB5.
 	// Assign the TRISB bit for this pin to configure this port as an input.
-
+	TRISBbits.TRISB5 = 1; // TRISB controls direction for all PORTB pins, where 0 -> output, 1 -> input.
 
 	// Clear Timer value (i.e. current tiemr value) to 0
 	TMR1 = 0;				

@@ -75,9 +75,9 @@ section                    address   length (PC units)   length (bytes) (dec)
 .text                        0x200               0x946           0xde9  (3561)
 .const                       0xb46                0x5a            0x87  (135)
 .dinit                       0xba0                0xcc           0x132  (306)
-.text                        0xc6c                0xc8           0x12c  (300)
+.text                        0xc6c                0xca           0x12f  (303)
 
-                     Total program memory used (bytes):         0x10ce  (4302) 6%
+                     Total program memory used (bytes):         0x10d1  (4305) 6%
 
 
 Data Memory  [Origin = 0x800, Length = 0x2000]
@@ -139,12 +139,12 @@ External Symbols in Program Memory (by address):
                   0x000a8a                  ___divdi3
                   0x000aea                  ___moddi3
                   0x000c6c                  _main
-                  0x000d10                  __T1Interrupt
+                  0x000d12                  __T1Interrupt
 
 External Symbols in Program Memory (by name):
 
                   0x000294                  __DefaultInterrupt
-                  0x000d10                  __T1Interrupt
+                  0x000d12                  __T1Interrupt
                   0x000a8a                  ___divdi3
                   0x000aea                  ___moddi3
                   0x000a74                  ___udivdi3
@@ -269,9 +269,9 @@ __CONFIG1         0x00abfe          0x2
  *(.debug_abbrev)
  .debug_abbrev    0x000000        0x144 build/default/production/lab0.o
 
-.debug_line       0x000000        0x1ab
+.debug_line       0x000000        0x1b3
  *(.debug_line)
- .debug_line      0x000000        0x1ab build/default/production/lab0.o
+ .debug_line      0x000000        0x1b3 build/default/production/lab0.o
 
 .debug_frame      0x000000         0xac
  *(.debug_frame)
@@ -313,7 +313,7 @@ __CONFIG1         0x00abfe          0x2
                   0x000014          0x4 LONG 0x294 DEFINED (__INT0Interrupt)?ABSOLUTE (__INT0Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000016          0x4 LONG 0x294 DEFINED (__IC1Interrupt)?ABSOLUTE (__IC1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000018          0x4 LONG 0x294 DEFINED (__OC1Interrupt)?ABSOLUTE (__OC1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00001a          0x4 LONG 0xd10 DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00001a          0x4 LONG 0xd12 DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00001c          0x4 LONG 0x294 DEFINED (__Interrupt4)?ABSOLUTE (__Interrupt4):ABSOLUTE (__DefaultInterrupt)
                   0x00001e          0x4 LONG 0x294 DEFINED (__IC2Interrupt)?ABSOLUTE (__IC2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000020          0x4 LONG 0x294 DEFINED (__OC2Interrupt)?ABSOLUTE (__OC2Interrupt):ABSOLUTE (__DefaultInterrupt)
@@ -441,7 +441,7 @@ __CONFIG1         0x00abfe          0x2
                   0x000114          0x4 LONG 0x294 DEFINED (__AltINT0Interrupt)?ABSOLUTE (__AltINT0Interrupt):DEFINED (__INT0Interrupt)?ABSOLUTE (__INT0Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000116          0x4 LONG 0x294 DEFINED (__AltIC1Interrupt)?ABSOLUTE (__AltIC1Interrupt):DEFINED (__IC1Interrupt)?ABSOLUTE (__IC1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000118          0x4 LONG 0x294 DEFINED (__AltOC1Interrupt)?ABSOLUTE (__AltOC1Interrupt):DEFINED (__OC1Interrupt)?ABSOLUTE (__OC1Interrupt):ABSOLUTE (__DefaultInterrupt)
-                  0x00011a          0x4 LONG 0xd10 DEFINED (__AltT1Interrupt)?ABSOLUTE (__AltT1Interrupt):DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
+                  0x00011a          0x4 LONG 0xd12 DEFINED (__AltT1Interrupt)?ABSOLUTE (__AltT1Interrupt):DEFINED (__T1Interrupt)?ABSOLUTE (__T1Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x00011c          0x4 LONG 0x294 DEFINED (__AltInterrupt4)?ABSOLUTE (__AltInterrupt4):DEFINED (__Interrupt4)?ABSOLUTE (__Interrupt4):ABSOLUTE (__DefaultInterrupt)
                   0x00011e          0x4 LONG 0x294 DEFINED (__AltIC2Interrupt)?ABSOLUTE (__AltIC2Interrupt):DEFINED (__IC2Interrupt)?ABSOLUTE (__IC2Interrupt):ABSOLUTE (__DefaultInterrupt)
                   0x000120          0x4 LONG 0x294 DEFINED (__AltOC2Interrupt)?ABSOLUTE (__AltOC2Interrupt):DEFINED (__OC2Interrupt)?ABSOLUTE (__OC2Interrupt):ABSOLUTE (__DefaultInterrupt)
@@ -1205,7 +1205,7 @@ __c30_signature
 .dinit            0x000ba0         0xcc
  .dinit           0x000ba0         0xcc data_init
 
-.text             0x000c6c         0xc8
- .text            0x000c6c         0xc8 build/default/production/lab0.o
+.text             0x000c6c         0xca
+ .text            0x000c6c         0xca build/default/production/lab0.o
                   0x000c6c                  _main
-                  0x000d10                  __T1Interrupt
+                  0x000d12                  __T1Interrupt
