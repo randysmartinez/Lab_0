@@ -1,5 +1,8 @@
 // ******************************************************************************************* //
-//
+// Authors:      Randy Martinez
+// netid:        randysmartinez
+// Class:        ECE372A
+// Date:         9/12/14
 // File:         lab0.c   
 // Date:         08-20-2010
 // Authors:      Roman Lysecky 
@@ -24,6 +27,7 @@
 
 #include "p24fj64ga002.h"
 #include <stdio.h>
+typedef enum stateTypeEnum {WaitForPress, WaitForRelease,LEDToggle}stateType;
 
 // ******************************************************************************************* //
 // Configuration bits for CONFIG1 settings. 
@@ -75,6 +79,8 @@ int ledToToggle = 4;
 
 int main(void)
 {
+  stateType state;
+
 	// Varaible for character recived by UART.
 	int receivedChar;
 
@@ -102,6 +108,7 @@ int main(void)
 
 	// **TODO** SW1 of the 16-bit 28-pin Starter Board is connected to pin RB?? RB5.
 	// Assign the TRISB bit for this pin to configure this port as an input.
+
 	TRISBbits.TRISB5 = 1; // TRISB controls direction for all PORTB pins, where 0 -> output, 1 -> input.
 
 	// Clear Timer value (i.e. current tiemr value) to 0
@@ -173,7 +180,7 @@ int main(void)
 	//           c.) Entering the size of heap, e.g. 512, under Heap Size
 	//        2. printf function is advanced and using printf may require 
 	//           significant code size (6KB-10KB).   
-	printf("\n\n\GREETING!\n\r");//Modified according to the tutorial, Changed a second time
+	printf("\n\n\GREETINGS!\n\r");//Modified according to the tutorial, Changed a second time
 
 	// Print a message requesting the user to select a LED to toggle.
 	printf("Select LED to Toggle (4-7): ");
@@ -187,11 +194,39 @@ int main(void)
 		// will blink twice as fast. When SW1 is released the LEDs will blink at 
 		// the initially defined rate.
 
+            switch(state) {
+                    case WaitForPress:
+                        if(PORTBbits.RB5==0) {
+                            state = LEDToggle;
+                            PR1  =  14400/2;
+                            TMR1 = 0;
+                        }
+                        break;
+
+                    case LEDToggle:
+                            LATB = LATB^0x8000;
+                            state = WaitForRelease;
+
+                            break;
+                    case WaitForRelease:
+                         if(PORTBbits.RB5==1) {
+                             state = WaitForPress;
+                             PR1 = 14400;
+                             TMR1 = 0;
+                            }
+                         break;
+
+                         default:
+                         break;
+               }
+                // Code from slide 26 was implemented
+
 
 		// Use the UART RX interrupt flag to wait until we recieve a character.
 		if(IFS0bits.U1RXIF == 1) {	
 
-			// U1RXREG stores the last character received by the UART. Read this 
+
+                    // U1RXREG stores the last character received by the UART. Read this
 			// value into a local variable before processing.
 			receivedChar = U1RXREG;
 
